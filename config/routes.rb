@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   root 'items#index'
   get '/items/new/search' => 'items#search'
   resources :items,only: [:index, :edit, :new, :create, :show, :edit, :update] do
+    collection do
+      get 'fuzzysearch'
+    end
   end
   resources :creditcards, only: [:index, :new, :show, :edit] do
     collection do

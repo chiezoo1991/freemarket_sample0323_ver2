@@ -85,4 +85,8 @@ class ItemsController < ApplicationController
   def move_to_index
     redirect_to new_user_session_path
   end
+
+  def fuzzysearch
+    Item.where('name LIKE(?)',"%#{params[:keyword]}%")
+  end
 end
